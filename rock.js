@@ -1,26 +1,8 @@
-// Keep asking player's choice if none of rock, paper, or scissors are chosen
-let playerSelection;
-do {
-    playerSelection = prompt('Please choose between rock, paper, or scissors: ').toLowerCase();
-    console.log(`playerSelection: ${playerSelection}`);
-}
-while((playerSelection !== 'rock') &&
-      (playerSelection !== 'paper') &&
-      (playerSelection !== 'scissors'));
-
-// Get computer's choice 
-let computerSelection = getComputerChoice();
-
-// Play single round of game
-//playRound(playerSelection, computerSelection);
-//console.log(playRound(playerSelection, computerSelection));
-
 function getComputerChoice(){
     let array = ['Rock', 'Paper', 'Scissors'];
     let length = array.length;
     let randomIndex = Math.floor(Math.random()*length);
     let result = array[randomIndex];
-    console.log(`getComputerChoice: ${result}`);
     return result;
 }
 
@@ -47,10 +29,25 @@ function game(){
     let scoreC = 0;
     let text;
     for (let i = 0; i< 5; i++){
+        // Keep asking player's choice if none of rock, paper, or scissors are chosen
+        let playerSelection;
+        do {
+            playerSelection = prompt('Please choose between rock, paper, or scissors: ').toLowerCase();
+        }
+        while((playerSelection !== 'rock') &&
+            (playerSelection !== 'paper') &&
+            (playerSelection !== 'scissors'));
+
+        // Get computer's choice 
+        let computerSelection = getComputerChoice();
+
         let result = playRound(playerSelection, computerSelection);
         // Calculate respective scores of player and computer in 5 rounds
         if (result.startsWith('won', 4)) scoreP +=1;
         if (result.startsWith('lose', 4)) scoreC +=1;
+        console.log(`round ${i+1}`);
+        console.log(`scoreP: ${scoreP}`);
+        console.log(`scoreC: ${scoreC}`);
     }
     if (scoreP > scoreC ){
         text = 'Congratulation! You have beaten computer in 5 rounds of rock-paper-scissors.';
