@@ -12,8 +12,8 @@ while((playerSelection !== 'rock') &&
 let computerSelection = getComputerChoice();
 
 // Play single round of game
-playRound(playerSelection, computerSelection);
-
+//playRound(playerSelection, computerSelection);
+//console.log(playRound(playerSelection, computerSelection));
 
 function getComputerChoice(){
     let array = ['Rock', 'Paper', 'Scissors'];
@@ -25,8 +25,7 @@ function getComputerChoice(){
 }
 
 
-function playRound(playerSelection, computerSelection){
-    
+function playRound(playerSelection, computerSelection){   
     let result;
     if (playerSelection === computerSelection.toLowerCase()){
         result = 'You tied with computer for this round';
@@ -42,3 +41,27 @@ function playRound(playerSelection, computerSelection){
     console.log(`playRound: ${result}`);
     return result;
 }
+
+function game(){
+    let scoreP = 0;
+    let scoreC = 0;
+    let text;
+    for (let i = 0; i< 5; i++){
+        let result = playRound(playerSelection, computerSelection);
+        // Calculate respective scores of player and computer in 5 rounds
+        if (result.startsWith('won', 4)) scoreP +=1;
+        if (result.startsWith('lose', 4)) scoreC +=1;
+    }
+    if (scoreP > scoreC ){
+        text = 'Congratulation! You have beaten computer in 5 rounds of rock-paper-scissors.';
+    } else if (scoreP < scoreC){
+        text = 'Sorry! You have lost the game.'
+    } else {
+        text = 'Oops! You have tied with computer in 5 rounds of rock-paper-scissors.'
+    }
+    console.log(text);
+    return text;
+    
+}
+
+game();
