@@ -9,12 +9,15 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){   
     let result;
+    // If player tie with computer
     if (playerSelection === computerSelection.toLowerCase()){
         result = 'You tied with computer for this round';
+    // If player beats computer
     } else if ((playerSelection === 'rock' && computerSelection.toLowerCase() === 'scissors') ||
                (playerSelection === 'paper' && computerSelection.toLowerCase() === 'rock') ||
                (playerSelection === 'scissors' && computerSelection.toLowerCase() === 'paper')){
         result = `You won! ${playerSelection} beats ${computerSelection}`;
+    // If player lose computer
     } else {
         result = `You lose! ${computerSelection} beats ${playerSelection}`;
     }
@@ -28,6 +31,7 @@ function game(){
     let scoreP = 0;
     let scoreC = 0;
     let text;
+    // Play 5 rounds, and sum the scores
     for (let i = 0; i< 5; i++){
         // Keep asking player's choice if none of rock, paper, or scissors are chosen
         let playerSelection;
@@ -49,6 +53,7 @@ function game(){
         console.log(`scoreP: ${scoreP}`);
         console.log(`scoreC: ${scoreC}`);
     }
+    // Compare scores between player and computer, then return the final result
     if (scoreP > scoreC ){
         text = 'Congratulation! You have beaten computer in 5 rounds of rock-paper-scissors.';
     } else if (scoreP < scoreC){
