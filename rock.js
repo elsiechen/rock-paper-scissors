@@ -1,16 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('button');
     let resultDiv = document.querySelector('.result');
-
+    let scorePDiv = document.querySelector('.scoreP');
+    let scoreCDiv = document.querySelector('.scoreC');
+    let scoreP = 0;
+    let scoreC = 0;
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             // Get player's choice
             let playerSelection = button.value;
+
             // Get computer's choice 
             let computerSelection = getComputerChoice();
-            resultDiv.textContent = playRound(playerSelection, computerSelection);
+
+            // Play single round
+            let result = playRound(playerSelection, computerSelection);
+            resultDiv.textContent = result;
+
+            // Calculate and update respective scores
+            if (result.startsWith('won', 4)) {
+                scoreP +=1;
+                scorePDiv.textContent = `Score of Player: ${scoreP}`;
+                console.log('scoreP', scoreP);
+            } else if (result.startsWith('lose', 4)) {
+                scoreC +=1;
+                scoreCDiv.textContent = `Score of Computer: ${scoreC}`;
+                console.log('scoreC', scoreC);
+            }
+            
+            
+            // Check if scores reach 5
+            if(scoreP === 5){
+                resultDiv.textContent = 'Congratulation! You have beaten computer!';
+                buttons.forEach(button => button.disabled = true);
+            } else if (scoreC === 5){
+                resultDiv.textContent = 'Sorry! You have lost the game.';
+                buttons.forEach(button => button.disabled = true);
+            }
         })
     });
+
+    
 
 
 });
