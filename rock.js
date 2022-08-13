@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('button');
-    console.log(buttons);
+    let resultDiv = document.querySelector('.result');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let playerSelection = button.value;
             // Get computer's choice 
             let computerSelection = getComputerChoice();
-            playRound(playerSelection, computerSelection);
+            resultDiv.textContent = playRound(playerSelection, computerSelection);
         })
     });
+
 
 });
 
