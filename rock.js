@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('button');
+    console.log(buttons);
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get player's choice
+            let playerSelection = button.value;
+            // Get computer's choice 
+            let computerSelection = getComputerChoice();
+            playRound(playerSelection, computerSelection);
+        })
+    });
+
+});
+
+
 function getComputerChoice(){
     let array = ['Rock', 'Paper', 'Scissors'];
     let length = array.length;
@@ -66,4 +83,3 @@ function game(){
     
 }
 
-game();
