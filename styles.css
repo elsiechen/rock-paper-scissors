@@ -1,0 +1,12 @@
+html {
+    box-sizing: border-box;
+}
+
+.bigContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* stretch body to whole viewport height */
+    height: 100vh;
+}
