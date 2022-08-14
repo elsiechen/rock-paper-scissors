@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let scoreCDiv = document.querySelector('.scoreC');
     let scoreP = 0;
     let scoreC = 0;
+    let againBtn = document.querySelector('.again');
+
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             // Get player's choice
@@ -37,16 +39,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if(scoreP === 5){
                 resultDiv.textContent = 'Congratulation! You have beaten computer!';
                 resultDiv.classList.add('winner');
+                // Disabled button hover effect
+                buttons.forEach(button => button.classList.add('buttonHoverDisabled'));
+
                 buttons.forEach(button => button.disabled = true);
+                againBtn.style.display = 'block';
             } else if (scoreC === 5){
                 resultDiv.textContent = 'Sorry! You have lost the game.';
                 resultDiv.classList.add('loser');
+                // Disabled button and hover effect
+                buttons.forEach(button => button.classList.add('buttonHoverDisabled'));
                 buttons.forEach(button => button.disabled = true);
+                
+                againBtn.style.display = 'block';
             }
         })
     });
 
-    
+    againBtn.addEventListener('click', () => {
+        // Enable button and hover effect
+        buttons.forEach(button => button.classList.remove('buttonHoverDisabled'));
+        buttons.forEach(button => button.disabled = false);
+        
+        againBtn.style.display = 'none';
+        // Reset scores html
+        scoreP = 0;
+        scoreC = 0;
+        scorePDiv.textContent = 'Score of Player: 0'; 
+        scoreCDiv.textContent = 'Score of Computer: 0';
+        resultDiv.textContent = '';
+    });
 
 
 });

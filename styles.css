@@ -23,9 +23,14 @@ button {
     padding: 0.5rem;
 }
 
-button:hover{
+button:hover, .again:hover{
     transform: scale(1.1);
     box-shadow: 5px 8px 8px rgb(177, 177, 177);
+}
+
+.buttonHoverDisabled{
+    /* disabled hover effect */
+    pointer-events: none;
 }
 
 .scores{
@@ -41,13 +46,26 @@ button:hover{
 .winner{
     font-size: 40px;
     color: gold;
-    border: 2px dot gold;
     text-shadow: 5px 8px 8px rgb(177, 177, 177);
 }
 
 .loser{
     font-size: 40px;
     color: red;
-    border: 2px dot red;
     text-shadow: 5px 8px 8px rgb(177, 177, 177);
+}
+
+.again{
+    background-color: antiquewhite;
+    border: 4px double green;
+    color: green;
+    border-radius: 0.7rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    display: none;
+}
+
+.again:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 8px 8px rgb(177, 177, 177);
 }
