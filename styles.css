@@ -1,4 +1,4 @@
-html {
+* {
     box-sizing: border-box;
 }
 
@@ -9,4 +9,21 @@ html {
     align-items: center;
     /* stretch body to whole viewport height */
     height: 100vh;
+    flex-wrap: wrap;
+    row-gap: 50px;
+}
+
+button {
+    font-size: 3rem;
+    background-color: white;
+    color: rgb(23, 130, 211);
+    border: 4px solid green;
+    border-radius: 0.7rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+button:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 8px 8px rgb(177, 177, 177);
 }
