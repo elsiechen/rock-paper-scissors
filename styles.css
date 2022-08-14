@@ -27,3 +27,27 @@ button:hover{
     transform: scale(1.1);
     box-shadow: 5px 8px 8px rgb(177, 177, 177);
 }
+
+.scores{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.result{
+    font-size: 36px;
+    font-weight: bolder;
+}
+
+.winner{
+    font-size: 40px;
+    color: gold;
+    border: 2px dot gold;
+    text-shadow: 5px 8px 8px rgb(177, 177, 177);
+}
+
+.loser{
+    font-size: 40px;
+    color: red;
+    border: 2px dot red;
+    text-shadow: 5px 8px 8px rgb(177, 177, 177);
+}

@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Play single round
             let result = playRound(playerSelection, computerSelection);
             resultDiv.textContent = result;
+            // Set result color
+            if (result.startsWith('won', 4)) resultDiv.style.color = 'gold';
+            if (result.startsWith('lose', 4)) resultDiv.style.color = 'red';
+            if (result.startsWith('tied', 4)) resultDiv.style.color = 'blue';
 
             // Calculate and update respective scores
             if (result.startsWith('won', 4)) {
@@ -32,9 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check if scores reach 5
             if(scoreP === 5){
                 resultDiv.textContent = 'Congratulation! You have beaten computer!';
+                resultDiv.classList.add('winner');
                 buttons.forEach(button => button.disabled = true);
             } else if (scoreC === 5){
                 resultDiv.textContent = 'Sorry! You have lost the game.';
+                resultDiv.classList.add('loser');
                 buttons.forEach(button => button.disabled = true);
             }
         })
